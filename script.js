@@ -344,23 +344,64 @@ function initFireworks() {
 function startWeddingMusic() {
   const audio = document.getElementById('weddingAudio');
   if (!audio) return;
+  
+  // Set volume for fade-in effect
   audio.volume = 0;
-  const tryPlay = () => {
-    audio.play().then(() => {
-      let vol = 0;
-      const fade = setInterval(() => {
-        vol = Math.min(vol + 0.012, 0.75);
-        audio.volume = vol;
-        if (vol >= 0.75) clearInterval(fade);
-      }, 80);
-    }).catch(() => {});
+  let isUnmuted = false;
+  
+  // Function to unmute and fade in audio
+  const unmuteAndFadeIn = () => {
+    if (isUnmuted) return; // Already unmuted
+    isUnmuted = true;
+    
+    // Remove muted attribute to play sound
+    audio.muted = false;
+    
+    // Fade in volume smoothly
+    let vol = 0;
+    const fadeInterval = setInterval(() => {
+      vol = Math.min(vol + 0.015, 0.75);
+      audio.volume = vol;
+      if (vol >= 0.75) clearInterval(fadeInterval);
+    }, 50);
   };
-  tryPlay();
-  ['click','scroll','touchstart','keydown'].forEach(ev => {
-    document.addEventListener(ev, function unlock() {
-      tryPlay();
-      document.removeEventListener(ev, unlock);
-    }, { once: true });
+  
+  // Function to ensure audio is playing
+  const ensureAudioPlaying = () => {
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Play failed, will retry on interaction
+      });
+    }
+  };
+  
+  // Unmute after a short delay to let page fully load
+  setTimeout(() => {
+    unmuteAndFadeIn();
+    ensureAudioPlaying();
+  }, 500);
+  
+  // Also unmute on first user interaction (backup method)
+  const handleUserInteraction = () => {
+    unmuteAndFadeIn();
+    ensureAudioPlaying();
+    // Remove listener after first interaction
+    document.removeEventListener('click', handleUserInteraction);
+    document.removeEventListener('touchstart', handleUserInteraction);
+    document.removeEventListener('keydown', handleUserInteraction);
+  };
+  
+  document.addEventListener('click', handleUserInteraction, { once: true });
+  document.addEventListener('touchstart', handleUserInteraction, { once: true });
+  document.addEventListener('keydown', handleUserInteraction, { once: true });
+  
+  // Ensure audio keeps playing when returning to tab
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && audio.paused) {
+      unmuteAndFadeIn();
+      ensureAudioPlaying();
+    }
   });
 }
 
