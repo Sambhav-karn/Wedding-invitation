@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shivam ❤️ Khushbu – Royal Wedding Invitation</title>
+  <link rel="stylesheet" href="style.css"/>
+  <!-- Elegant calligraphy + serif fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Cinzel:wght@400;600;700&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- ========================================
+     BACKGROUND AUDIO – hidden, auto-play on loop
+     👉 Place your MP3 as "wedding-song.mp3" in the same folder as index.html
+======================================== -->
+<audio id="weddingAudio" loop preload="auto">
+  <source src="./song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Minimal music indicator – bottom left, no controls -->
+<!-- <div class="music-bar" id="musicBar">
+  <div class="music-bar-note">🎵</div>
+  <div class="music-bar-info">
+    <div class="music-bar-label">Now Playing</div>
+    <div class="music-bar-title" id="nowPlaying">♪ Shivam ❤️ Khushbu</div>
+  </div>
+  <div class="music-bar-equalizer">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+</div> -->
+
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ========================================
+     SECTION 1 – CINEMATIC INTRO LOADER
+======================================== -->
+<section id="intro" class="section-intro">
+  <!-- Mandala canvas -->
+  <canvas id="mandalaCanvas"></canvas>
+
+  <!-- Golden floating particles -->
+  <div class="particles-container" id="particles"></div>
+
+  <!-- Intro text content -->
+  <div class="intro-content">
+    <p class="blessing-text" id="blessingText"></p>
+    <div class="couple-title" id="coupleTitle">
+      <span class="name-shivam">Shivam</span>
+      <span class="heart-icon">❤️</span>
+      <span class="name-khushbu">Khushbu</span>
+    </div>
+    <p class="invite-subtext" id="inviteSubtext">Invite You To Celebrate Their Wedding</p>
+    <div class="scroll-hint" id="scrollHint">
+      <span>Scroll to Begin</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </div>
+
+  <!-- Decorative mandala overlay -->
+  <div class="mandala-overlay top-left"></div>
+  <div class="mandala-overlay top-right"></div>
+  <div class="mandala-overlay bottom-left"></div>
+  <div class="mandala-overlay bottom-right"></div>
+</section>
+
+<!-- ========================================
+     SECTION 2 – LIVE COUNTDOWN
+======================================== -->
+<section id="countdown" class="section-countdown reveal-section">
+  <div class="section-ornament">❧</div>
+  <h2 class="section-title">The Auspicious Day Approaches</h2>
+  <p class="section-subtitle">13 March 2026 — A New Chapter Begins</p>
+
+  <div class="countdown-wrapper">
+    <div class="countdown-box" id="cd-days">
+      <div class="flip-container">
+        <div class="cd-number" id="days">00</div>
+      </div>
+      <div class="cd-label">Days</div>
+    </div>
+    <div class="countdown-separator">:</div>
+    <div class="countdown-box" id="cd-hours">
+      <div class="flip-container">
+        <div class="cd-number" id="hours">00</div>
+      </div>
+      <div class="cd-label">Hours</div>
+    </div>
+    <div class="countdown-separator">:</div>
+    <div class="countdown-box" id="cd-minutes">
+      <div class="flip-container">
+        <div class="cd-number" id="minutes">00</div>
+      </div>
+      <div class="cd-label">Minutes</div>
+    </div>
+    <div class="countdown-separator">:</div>
+    <div class="countdown-box" id="cd-seconds">
+      <div class="flip-container">
+        <div class="cd-number" id="seconds">00</div>
+      </div>
+      <div class="cd-label">Seconds</div>
+    </div>
+  </div>
+
+  <!-- Floating petals -->
+  <div class="petals-container" id="petalsCd"></div>
+</section>
+
+<!-- ========================================
+     SECTION 3 – WEDDING EVENTS TIMELINE
+======================================== -->
+<section id="events" class="section-events reveal-section">
+  <div class="section-ornament">✦</div>
+  <h2 class="section-title">Our Sacred Celebrations</h2>
+  <p class="section-subtitle">Join us across these blessed occasions</p>
+
+  <div class="timeline">
+    <!-- Vertical glowing line -->
+    <div class="timeline-line"></div>
+
+    <!-- Event 1: Shubh Tilak -->
+    <div class="timeline-item left scroll-reveal">
+      <div class="timeline-dot">
+        <span>🪔</span>
+      </div>
+      <div class="event-card">
+        <div class="event-card-inner">
+          <div class="event-icon-large">🪔</div>
+          <div class="event-date-badge">09 March 2026</div>
+          <h3 class="event-name">Shubh Tilak</h3>
+          <p class="event-desc">A sacred ceremony marking the beginning of the wedding festivities, where the groom is blessed by the elders with the holy tilak.</p>
+          <div class="event-decor">— ✦ —</div>
+        </div>
+        <div class="card-glow"></div>
+      </div>
+    </div>
+
+    <!-- Event 2: Haldi -->
+    <div class="timeline-item right scroll-reveal">
+      <div class="timeline-dot">
+        <span>🌼</span>
+      </div>
+      <div class="event-card">
+        <div class="event-card-inner">
+          <div class="event-icon-large">🌼</div>
+          <div class="event-date-badge">11 March 2026</div>
+          <h3 class="event-name">Haldi Ceremony</h3>
+          <p class="event-desc">An auspicious ritual where turmeric paste is lovingly applied to the bride and groom, symbolizing purity, prosperity, and a radiant new beginning.</p>
+          <div class="event-decor">— ✦ —</div>
+        </div>
+        <div class="card-glow"></div>
+      </div>
+    </div>
+
+    <!-- Event 3: Wedding -->
+    <div class="timeline-item left scroll-reveal">
+      <div class="timeline-dot">
+        <span>🏺</span>
+      </div>
+      <div class="event-card featured-event">
+        <div class="event-card-inner">
+          <div class="event-icon-large">💍</div>
+          <div class="event-date-badge main-badge">13 March 2026</div>
+          <h3 class="event-name">Wedding Ceremony</h3>
+          <p class="event-desc">The sacred union of two souls. With the blessings of the divine and our beloved family & friends, Shivam & Khushbu take their sacred vows for eternity.</p>
+          <div class="event-decor">— ✦ —</div>
+          <div class="featured-ribbon">Main Event</div>
+        </div>
+        <div class="card-glow main-glow"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     SECTION 4 – BARAAT JOURNEY ANIMATION
+======================================== -->
+<section id="baraat" class="section-baraat reveal-section">
+  <div class="baraat-bg"></div>
+  <div class="stars-container" id="baraatStars"></div>
+
+  <div class="section-ornament">🌟</div>
+  <h2 class="section-title baraat-title">The Grand Baraat</h2>
+  <p class="section-subtitle">A Royal Procession</p>
+
+  <div class="baraat-route-wrapper">
+    <div class="route-location start-location scroll-reveal">
+      <div class="location-icon">🏡</div>
+      <div class="location-name">Tishkhora</div>
+      <div class="location-sub">Bihar</div>
+      <div class="location-label">Departure</div>
+    </div>
+
+    <div class="route-path-container">
+      <div class="route-path">
+        <div class="route-line"></div>
+        <div class="route-dots">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <!-- Animated horse/vehicle icon -->
+        <div class="baraat-vehicle" id="baraatVehicle">🐎</div>
+      </div>
+      <div class="baraat-procession-text">🥁 Dhol · 🎺 Shehnai · 🕺 Baraat · ✨ Celebrations</div>
+    </div>
+
+    <div class="route-location end-location scroll-reveal">
+      <div class="location-icon">🏰</div>
+      <div class="location-name">Ibrahimpur</div>
+      <div class="location-sub">Bihar</div>
+      <div class="location-label">Destination</div>
+    </div>
+  </div>
+
+  <div class="baraat-message scroll-reveal">
+    <p>"The groom's procession will arrive with great joy, music, and celebration.<br>Come be a part of this unforgettable moment."</p>
+  </div>
+</section>
+
+<!-- ========================================
+     SECTION 5 – OUR LOVE STORY (Shayari / Poetry)
+======================================== -->
+<section id="lovestory" class="section-lovestory reveal-section">
+  <!-- Animated background canvas -->
+  <canvas id="loveCanvas"></canvas>
+
+  <div class="section-ornament">🪷</div>
+  <h2 class="section-title">Our Love Story</h2>
+  <p class="section-subtitle">Written in the stars, sealed with the heart</p>
+
+  <!-- Central couple emblem -->
+  <div class="couple-emblem scroll-reveal">
+    <div class="emblem-ring outer"></div>
+    <div class="emblem-ring middle"></div>
+    <div class="emblem-ring inner"></div>
+    <div class="emblem-center">
+      <span class="emblem-s">S</span>
+      <span class="emblem-heart">❤️</span>
+      <span class="emblem-k">K</span>
+    </div>
+  </div>
+
+  <!-- Shayari / Poetry Cards grid -->
+  <div class="shayari-grid">
+
+    <div class="shayari-card scroll-reveal" data-delay="0">
+      <div class="shayari-icon">🌹</div>
+      <p class="shayari-urdu">तुम मिले तो लगा जैसे दुआ क़बूल हुई,</p>
+      <p class="shayari-urdu">ज़िन्दगी की हर राह अब मंज़ूर हुई।</p>
+      <p class="shayari-translation">"When I found you, it felt like a prayer answered — every road of life suddenly felt right."</p>
+      <div class="shayari-decor">— ✦ —</div>
+    </div>
+
+    <div class="shayari-card scroll-reveal featured-shayari" data-delay="150">
+      <div class="shayari-icon">💍</div>
+      <p class="shayari-urdu">दो दिल, एक धड़कन, एक वादा,</p>
+      <p class="shayari-urdu">शिवम और खुशबू का यह पवित्र इरादा।</p>
+      <p class="shayari-translation">"Two hearts, one heartbeat, one promise — the sacred bond of Shivam & Khushbu."</p>
+      <div class="shayari-decor">— ✦ —</div>
+    </div>
+
+    <div class="shayari-card scroll-reveal" data-delay="300">
+      <div class="shayari-icon">🌙</div>
+      <p class="shayari-urdu">चाँद भी शर्माया जब तुमने मुस्कुराया,</p>
+      <p class="shayari-urdu">इस दुनिया में तुमसा कोई नहीं पाया।</p>
+      <p class="shayari-translation">"Even the moon blushed when you smiled — there is no one in this world quite like you."</p>
+      <div class="shayari-decor">— ✦ —</div>
+    </div>
+
+    <div class="shayari-card scroll-reveal" data-delay="100">
+      <div class="shayari-icon">🪔</div>
+      <p class="shayari-urdu">सात फेरों में सात वादे बाँधे हैं हमने,</p>
+      <p class="shayari-urdu">हर जनम में तुम्हें ही माँगा है हमने।</p>
+      <p class="shayari-translation">"With seven sacred vows, we are bound — in every lifetime, I have wished for only you."</p>
+      <div class="shayari-decor">— ✦ —</div>
+    </div>
+
+    <div class="shayari-card scroll-reveal" data-delay="250">
+      <div class="shayari-icon">🌸</div>
+      <p class="shayari-urdu">खुशबू तेरी साँसों में बस गई है मेरी,</p>
+      <p class="shayari-urdu">तू ही है मेरी दुनिया, तू ही है मेरी परी।</p>
+      <p class="shayari-translation">"Your fragrance has settled in my every breath — you are my world, you are my angel."</p>
+      <div class="shayari-decor">— ✦ —</div>
+    </div>
+
+    <div class="shayari-card scroll-reveal" data-delay="400">
+      <div class="shayari-icon">✨</div>
+      <p class="shayari-urdu">यह रिश्ता नहीं, यह तो रूह का मेल है,</p>
+      <p class="shayari-urdu">शिवम और खुशबू का यह अनमोल खेल है।</p>
+      <p class="shayari-translation">"This is not just a bond — it is the meeting of two souls. The precious magic of Shivam & Khushbu."</p>
+      <div class="shayari-decor">— ✦ —</div>
+    </div>
+
+  </div>
+
+  <!-- Floating quote at bottom -->
+  <div class="love-quote scroll-reveal">
+    <span class="lq-open">"</span>
+    Love is not just a feeling — it is a promise written by God,<br/>
+    and today, <strong>Shivam & Khushbu</strong> are living that promise.
+    <span class="lq-close">"</span>
+  </div>
+</section>
+
+<!-- ========================================
+     SECTION 6 – INVITATION MESSAGE
+======================================== -->
+<section id="invitation" class="section-invitation reveal-section">
+  <!-- Floating petals canvas -->
+  <canvas id="petalsCanvas"></canvas>
+
+  <div class="invitation-content scroll-reveal">
+    <div class="invitation-border">
+      <div class="border-corner tl"></div>
+      <div class="border-corner tr"></div>
+      <div class="border-corner bl"></div>
+      <div class="border-corner br"></div>
+
+      <div class="inv-ornament top">༺ ✦ ༻</div>
+
+      <div class="family-names">
+        <span>The Families of Shivam & Khushbu</span>
+      </div>
+
+      <div class="inv-divider"></div>
+
+      <p class="inv-main-text">
+        With hearts full of joy and souls filled with gratitude,<br/>
+        we request the honour of your gracious presence<br/>
+        to celebrate this most sacred and joyous occasion.
+      </p>
+
+      <div class="inv-divider"></div>
+
+      <p class="inv-secondary-text">
+        Bless the couple with your love, your laughter,<br/>
+        and your warmest wishes as they begin<br/>
+        this beautiful journey together.
+      </p>
+
+      <div class="inv-ornament bottom">༺ ✦ ༻</div>
+
+      <div class="inv-couple-name">
+        Shivam <span class="inv-heart">❤️</span> Khushbu
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     SECTION 7 – FIREWORKS FINALE
+======================================== -->
+<section id="finale" class="section-finale">
+  <canvas id="fireworksCanvas"></canvas>
+
+  <div class="finale-content">
+    <div class="finale-ornament">✦ ✦ ✦</div>
+    <p class="finale-save-date" id="finaleText">Save The Date</p>
+    <div class="finale-date" id="finaleDate">13 March 2026</div>
+    <div class="finale-couple">
+      <span>Shivam</span>
+      <span class="finale-heart">❤️</span>
+      <span>Khushbu</span>
+    </div>
+    <p class="finale-tagline">Two hearts, one destiny. Forever begins here.</p>
+    <div class="finale-ornament bottom-orn">✦ ✦ ✦</div>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
